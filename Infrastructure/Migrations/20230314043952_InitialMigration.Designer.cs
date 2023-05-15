@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SpaghettiCommerce.Data;
+using SpaghettiCommerce.Infrastructure.Data;
 
 #nullable disable
 
-namespace SpaghettiCommerce.Migrations
+namespace SpaghettiCommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230314051746_AddCustomerOrders")]
-    partial class AddCustomerOrders
+    [Migration("20230314043952_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,9 +55,6 @@ namespace SpaghettiCommerce.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -155,9 +152,6 @@ namespace SpaghettiCommerce.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -271,7 +265,7 @@ namespace SpaghettiCommerce.Migrations
             modelBuilder.Entity("SpaghettiCommerce.Models.Order", b =>
                 {
                     b.HasOne("SpaghettiCommerce.Models.Customer", "Customer")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -327,11 +321,6 @@ namespace SpaghettiCommerce.Migrations
             modelBuilder.Entity("SpaghettiCommerce.Models.Cart", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("SpaghettiCommerce.Models.Customer", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("SpaghettiCommerce.Models.Manufacturer", b =>

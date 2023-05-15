@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SpaghettiCommerce.Domain.Models;
-using OrderProduct = SpaghettiCommerce.Domain.Models.Product;
-using Product = SpaghettiCommerce.Products.Product;
 
-namespace SpaghettiCommerce.Data;
+
+namespace SpaghettiCommerce.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
@@ -25,8 +24,6 @@ public class AppDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
 
     public DbSet<OrderItem> OrderItems { get; set; }
-
-    //public DbSet<OrderProduct> Products { get; set; }
-
-    public DbSet<Product> CatalogProducts { get; set; }
+    
+    public DbSet<Product> Products { get; set; }
 }

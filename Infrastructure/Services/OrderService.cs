@@ -1,19 +1,12 @@
-﻿using SpaghettiCommerce.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SpaghettiCommerce.Application;
 using SpaghettiCommerce.Domain.Models;
-using System.Net.Mail;
+using SpaghettiCommerce.Infrastructure.Data;
 using System.Net;
-using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Json;
+using System.Net.Mail;
 
-namespace SpaghettiCommerce.Services;
-
-public interface IOrderService
-{
-    Task<Order> GetOrder(int id);
-
-    Task<List<Order>> GetCustomerOrders(int customerId);
-
-    Task<string> Checkout(int cartId, string cardNumber, string cardExpiry, string cvv);
-}
+namespace Infrastructure.Services;
 
 public class OrderService : IOrderService
 {
@@ -30,9 +23,9 @@ public class OrderService : IOrderService
 
         var requestBody = new
         {
-            cardNumber = cardNumber,
-            cardExpiry = cardExpiry,
-            cvv = cvv
+            cardNumber,
+            cardExpiry,
+            cvv
         };
 
         var response = await httpClient.PostAsJsonAsync("https://spaghettipayments.com/api/payment", requestBody);
@@ -54,7 +47,7 @@ public class OrderService : IOrderService
                     Count = item.Count
                 });
             }
-            
+
             var order = new Order
             {
                 Customer = cart.Customer,

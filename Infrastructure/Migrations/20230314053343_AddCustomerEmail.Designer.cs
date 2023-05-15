@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SpaghettiCommerce.Data;
+using SpaghettiCommerce.Infrastructure.Data;
 
 #nullable disable
 
-namespace SpaghettiCommerce.Migrations
+namespace SpaghettiCommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20230314053343_AddCustomerEmail")]

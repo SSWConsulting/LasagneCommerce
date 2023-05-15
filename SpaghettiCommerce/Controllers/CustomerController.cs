@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Data;
+using SpaghettiCommerce.Application;
 using SpaghettiCommerce.Domain.Models;
 
 namespace SpaghettiCommerce.Controllers;
@@ -9,21 +8,18 @@ namespace SpaghettiCommerce.Controllers;
 [Route("[controller]")]
 public class CustomerController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly ICustomersService _customersService;
 
-    public CustomerController(AppDbContext context)
+    public CustomerController(ICustomersService customersService)
     {
-        _context = context;
+        _customersService = customersService;
     }
 
     [HttpGet("{id}/orders")]
     public async Task<ActionResult<List<Order>>> GetOrders(int id)
     {
-        var orders = await _context.Customers
-            .Where(c => c.Id == id)
-            .Select(c => c.Orders)
-            .FirstOrDefaultAsync();
+        var orders = await _customersService.GetCustomerOrders(id);
 
-        return Ok(orders);
+        return orders;
     }
 }

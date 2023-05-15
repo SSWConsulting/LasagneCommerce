@@ -1,14 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Data;
+using SpaghettiCommerce.Application;
+using SpaghettiCommerce.Domain.Models;
+using SpaghettiCommerce.Infrastructure.Data;
 
-namespace SpaghettiCommerce.Products;
-
-public interface IProductService
-{
-    Task<Product> GetProduct(int id);
-
-    Task<List<Product>> SearchProducts(string searchTerm);
-}
+namespace Infrastructure.Services;
 
 public class ProductService : IProductService
 {
@@ -18,15 +13,15 @@ public class ProductService : IProductService
     {
         _context = context;
     }
-    
+
     public async Task<Product> GetProduct(int id)
     {
-        return await _context.CatalogProducts.FindAsync(id);
+        return await _context.Products.FindAsync(id);
     }
 
     public async Task<List<Product>> SearchProducts(string searchTerm)
     {
-        return await _context.CatalogProducts
+        return await _context.Products
             .Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm))
             .ToListAsync();
     }

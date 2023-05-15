@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Data;
+using SpaghettiCommerce.Application;
 using SpaghettiCommerce.Domain.Models;
 
 namespace SpaghettiCommerce.Controllers;
@@ -9,64 +8,40 @@ namespace SpaghettiCommerce.Controllers;
 [Route("[controller]")]
 public class CartController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly ICartService _cartService;
 
-    public CartController(AppDbContext context)
+    public CartController(ICartService cartService)
     {
-        _context = context;
+        _cartService = cartService;
     }
     
     [HttpGet("{id}")]
     public async Task<ActionResult<Cart>> GetCart(int id)
     {
-        var cart = await _context.Carts.FindAsync(id);
+        var cart = await _cartService.GetCart(id);
 
-        return Ok(cart);
+        if (cart is not null)
+        {
+            return Ok(cart);
+        }
+        else
+        {
+            return NotFound();
+        }
     }
 
     [HttpPut("{cartId}/{productId}/{count}")]
     public async Task<ActionResult> Put(int cartId, int productId, int count)
     {
-        var cart = await _context.Carts.FindAsync(cartId);
-
-        if (cart is null)
-        {
-            cart = new Cart
-            {
-                Items = new List<CartItem>
-                {
-                    new CartItem
-                    {
-                        ProductId = productId,
-                        Count = count
-                    }
-                }
-            };
-        }
-        else
-        {
-            cart.Items.Add(new CartItem
-            {
-                ProductId = productId,
-                Count = count
-            });
-        }
-
-        await _context.SaveChangesAsync();
-
+        await _cartService.AddItem(cartId, productId, count);
+        
         return Ok();
     }
 
     [HttpDelete("{cartId}/{productId}")]
     public async Task<ActionResult> Delete(int cartId, int productId)
     {
-        var cart = await _context.Carts
-            .Include(c => c.Items)
-            .FirstOrDefaultAsync(c => c.Id == cartId);
-
-        var item = cart.Items.FirstOrDefault(i => i.ProductId == productId);
-
-        cart.Items.Remove(item);
+        await _cartService.RemoveItem(cartId, productId);
 
         return Ok();
     }

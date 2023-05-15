@@ -2,17 +2,17 @@
 
 #nullable disable
 
-namespace SpaghettiCommerce.Migrations
+namespace SpaghettiCommerce.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddOrderRef : Migration
+    public partial class AddCustomerEmail : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "CustomerOrderRef",
-                table: "Orders",
+                name: "Email",
+                table: "Customers",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
@@ -22,8 +22,8 @@ namespace SpaghettiCommerce.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CustomerOrderRef",
-                table: "Orders");
+                name: "Email",
+                table: "Customers");
         }
     }
 }

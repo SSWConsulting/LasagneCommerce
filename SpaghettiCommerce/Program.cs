@@ -1,7 +1,8 @@
 
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Data;
-using SpaghettiCommerce.Services;
+using SpaghettiCommerce.Application;
+using SpaghettiCommerce.Infrastructure.Data;
 
 namespace SpaghettiCommerce
 {
@@ -17,6 +18,9 @@ namespace SpaghettiCommerce
                     builder => builder.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
             builder.Services.AddSingleton<IOrderService, OrderService>();
+            builder.Services.AddSingleton<IProductService, ProductService>();
+            builder.Services.AddSingleton<ICartService, CartService>();
+            builder.Services.AddSingleton<ICustomersService, CustomersService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

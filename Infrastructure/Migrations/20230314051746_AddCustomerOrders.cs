@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SpaghettiCommerce.Migrations
+namespace SpaghettiCommerce.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class AddCustomerOrders : Migration
