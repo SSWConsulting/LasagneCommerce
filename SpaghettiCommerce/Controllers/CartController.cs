@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SpaghettiCommerce.Application;
+﻿using Application.Cart;
+using Microsoft.AspNetCore.Mvc;
 using SpaghettiCommerce.Domain.Models;
 
 namespace SpaghettiCommerce.Controllers;

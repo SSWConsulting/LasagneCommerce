@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Application;
+﻿using Application.Order.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using SpaghettiCommerce.Domain.Models;
 using SpaghettiCommerce.Infrastructure.Data;
 using System.Net;

@@ -1,6 +1,6 @@
 ﻿using SpaghettiCommerce.Domain.Models;
 
-namespace SpaghettiCommerce.Application;
+namespace Application.Customer.Abstractions;
 
 public interface ICustomersService
 {

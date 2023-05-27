@@ -1,15 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Application;
+﻿using Application.Products.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using SpaghettiCommerce.Domain.Models;
 using SpaghettiCommerce.Infrastructure.Data;
 
 namespace Infrastructure.Services;
 
-public class ProductService : IProductService
+public class ProductRepository : IProductRepository
 {
     private readonly AppDbContext _context;
 
-    public ProductService(AppDbContext context)
+    public ProductRepository(AppDbContext context)
     {
         _context = context;
     }

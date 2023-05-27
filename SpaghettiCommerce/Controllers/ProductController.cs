@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SpaghettiCommerce.Application;
+﻿using Application.Product.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SpaghettiCommerce.Controllers;
 

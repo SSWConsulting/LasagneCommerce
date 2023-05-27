@@ -1,10 +1,10 @@
-﻿using SpaghettiCommerce.Domain.Models;
+﻿using Application.Carts.DTOs;
 
-namespace SpaghettiCommerce.Application;
+namespace Application.Carts.Abstractions;
 
 public interface ICartService
 {
-    Task<Cart?> GetCart(int id);
+    Task<CartDto?> GetCart(int id);
 
     Task AddItem(int cartId, int productId, int count);
 

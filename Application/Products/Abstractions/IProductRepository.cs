@@ -1,12 +1,10 @@
 ﻿using SpaghettiCommerce.Domain.Models;
 
-namespace SpaghettiCommerce.Application;
+namespace Application.Products.Abstractions;
 
-public interface IProductService
+public interface IProductRepository
 {
     Task<Product?> GetProduct(int id);
 
     Task<List<Product>> SearchProducts(string searchTerm);
 }
-
-

@@ -1,7 +1,12 @@
 
+using Application.Cart;
+using Application.Carts.Abstractions;
+using Application.Customer.Abstractions;
+using Application.Order.Abstractions;
+using Application.Product.Abstractions;
+using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Application;
 using SpaghettiCommerce.Infrastructure.Data;
 
 namespace SpaghettiCommerce
@@ -18,8 +23,8 @@ namespace SpaghettiCommerce
                     builder => builder.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
             builder.Services.AddScoped<IOrderService, OrderService>();
-            builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<ICartService, CartService>();
+            builder.Services.AddScoped<IProductService, ProductRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
             builder.Services.AddScoped<ICustomersService, CustomersService>();
 
             builder.Services.AddControllers();
