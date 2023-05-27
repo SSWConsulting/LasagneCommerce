@@ -14,14 +14,19 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-    public async Task<Product> GetProduct(int id)
+    public async Task<Product?> GetProduct(int id)
     {
-        return await _context.Products.FindAsync(id);
+        return await _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Manufacturer)
+            .FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<List<Product>> SearchProducts(string searchTerm)
     {
         return await _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Manufacturer)
             .Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm))
             .ToListAsync();
     }

@@ -1,6 +1,6 @@
-﻿using Application.Cart;
+﻿using Application.Carts.Abstractions;
+using Application.Carts.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using SpaghettiCommerce.Domain.Models;
 
 namespace SpaghettiCommerce.Controllers;
 
@@ -16,7 +16,7 @@ public class CartController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    public async Task<ActionResult<Cart>> GetCart(int id)
+    public async Task<ActionResult<CartDto>> GetCart(int id)
     {
         var cart = await _cartService.GetCart(id);
 

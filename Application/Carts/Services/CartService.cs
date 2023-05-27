@@ -39,6 +39,9 @@ public class CartService : ICartService
             Count = count
         };
 
+        // Logic for cart total is an application concern so is calculated here
+        cart.Total += product.Price * count;
+
         cart.Items.Add(item);
         await _cartRepository.SaveCart(cart);
     }
@@ -69,6 +72,10 @@ public class CartService : ICartService
         if (item is not null)
         {
             cart.Items.Remove(item);
+
+            // Logic for cart total is an application concern so is calculated here
+            cart.Total -= item.Product.Price * item.Count;
+
             await _cartRepository.SaveCart(cart);
         }
     }

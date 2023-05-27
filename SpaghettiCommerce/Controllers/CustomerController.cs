@@ -1,6 +1,6 @@
-﻿using Application.Customer.Abstractions;
+﻿using Application.Customers.Abstractions;
+using Application.Orders.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using SpaghettiCommerce.Domain.Models;
 
 namespace SpaghettiCommerce.Controllers;
 
@@ -16,7 +16,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet("{id}/orders")]
-    public async Task<ActionResult<List<Order>>> GetOrders(int id)
+    public async Task<ActionResult<List<OrderDto>>> GetOrders(int id)
     {
         var orders = await _customersService.GetCustomerOrders(id);
 

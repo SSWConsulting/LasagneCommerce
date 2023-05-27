@@ -1,12 +1,10 @@
-﻿using SpaghettiCommerce.Domain.Models;
+﻿using Application.Orders.DTOs;
 
-namespace Application.Order.Abstractions;
+namespace Application.Orders.Abstractions;
 
 public interface IOrderService
 {
-    Task<Order> GetOrder(int id);
-
-    Task<List<Order>> GetCustomerOrders(int customerId);
-
+    Task<OrderDto> GetOrder(int id);
+    
     Task<string> Checkout(int cartId, string cardNumber, string cardExpiry, string cvv);
 }

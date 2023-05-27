@@ -1,8 +1,8 @@
-﻿using SpaghettiCommerce.Domain.Models;
+﻿using Application.Orders.DTOs;
 
-namespace Application.Customer.Abstractions;
+namespace Application.Customers.Abstractions;
 
 public interface ICustomersService
 {
-    Task<List<Order>> GetCustomerOrders(int customerId);
+    Task<List<OrderDto>> GetCustomerOrders(int customerId);
 }

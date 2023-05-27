@@ -24,7 +24,9 @@ public class CartRepository : ICartRepository
 
     public async Task<Cart?> GetCartById(int id)
     {
-        return await _context.Carts.FindAsync(id);
+        return await _context.Carts
+            .Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.Id == id);
     }
 
     public async Task RemoveItemFromCart(int cartId, int productId)

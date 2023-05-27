@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Orders.DTOs;
 
-namespace Application.Customer.DTOs;
+namespace Application.Customers.DTOs;
 
 public class CustomerDto
 {
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string DeliveryAddress { get; set; } = string.Empty;
+    public List<OrderDto> Orders { get; set; } = new();
 }

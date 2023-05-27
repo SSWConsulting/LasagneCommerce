@@ -1,4 +1,5 @@
-﻿using Application.Product.Abstractions;
+﻿using Application.Products.Abstractions;
+using Application.Products.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SpaghettiCommerce.Controllers;
@@ -15,7 +16,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<string>> GetProduct(int id)
+    public async Task<ActionResult<ProductDto>> GetProduct(int id)
     {
         var product = await _productService.GetProduct(id);
 
@@ -23,7 +24,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("search/{searchTerm}")]
-    public async Task<ActionResult<string>> SearchProducts(string searchTerm)
+    public async Task<ActionResult<List<ProductDto>>> SearchProducts(string searchTerm)
     {
         var products = await _productService.SearchProducts(searchTerm);
 

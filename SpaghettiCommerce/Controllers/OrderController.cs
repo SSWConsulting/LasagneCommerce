@@ -1,4 +1,4 @@
-﻿using Application.Order.Abstractions;
+﻿using Application.Orders.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SpaghettiCommerce.Controllers;
@@ -29,13 +29,5 @@ public class OrderController : ControllerBase
         var order = await _orderService.GetOrder(id);
 
         return Ok(order);
-    }
-    
-    [HttpGet("customer/{id}")]
-    public async Task<ActionResult<string>> GetOrders(int id)
-    {
-        var orders = await _orderService.GetCustomerOrders(id);
-
-        return Ok(orders);
     }
 }
