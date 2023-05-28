@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Domain.Models;
+using LasagneCommerce.Domain.Models;
 
 
-namespace SpaghettiCommerce.Infrastructure.Data;
+namespace LasagneCommerce.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {

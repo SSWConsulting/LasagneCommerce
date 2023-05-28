@@ -1,7 +1,7 @@
 ﻿using Application.Orders.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SpaghettiCommerce.Controllers;
+namespace LasagneCommerce.Controllers;
 
 [ApiController]
 [Route("[controller]")]

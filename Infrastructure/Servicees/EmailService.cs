@@ -17,7 +17,7 @@ public class EmailService : INotificationService
         MailMessage message = new MailMessage();
 
         // Set the sender and recipient addresses
-        message.From = new MailAddress("orders@spaghetticommerce.com");
+        message.From = new MailAddress("orders@Lasagnecommerce.com");
         message.To.Add(emailAddress);
 
         // Set the subject and body of the message
@@ -25,7 +25,7 @@ public class EmailService : INotificationService
         message.Body = $"Good news! Your order #{customerRef} has been received and will be on its way soon.";
 
         // Create a new SmtpClient object and set the SMTP server and port
-        SmtpClient smtpClient = new SmtpClient("smtp.spaghetticommerce.com", 587);
+        SmtpClient smtpClient = new SmtpClient("smtp.Lasagnecommerce.com", 587);
 
         // Set the credentials for the SMTP server (if required)
         smtpClient.Credentials = new NetworkCredential("orders", "5p4gh3tt1");

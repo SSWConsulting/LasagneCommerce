@@ -1,5 +1,5 @@
 ﻿using Application.Orders.DTOs;
-using SpaghettiCommerce.Domain.Models;
+using LasagneCommerce.Domain.Models;
 
 namespace Application.Orders.Mappings;
 

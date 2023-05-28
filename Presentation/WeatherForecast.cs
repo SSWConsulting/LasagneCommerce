@@ -1,4 +1,4 @@
-namespace SpaghettiCommerce
+namespace LasagneCommerce
 {
     public class WeatherForecast
     {

@@ -1,7 +1,7 @@
 ﻿using Application.Orders.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Domain.Models;
-using SpaghettiCommerce.Infrastructure.Data;
+using LasagneCommerce.Domain.Models;
+using LasagneCommerce.Infrastructure.Data;
 
 namespace Infrastructure.Services;
 

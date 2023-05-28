@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SpaghettiCommerce.Infrastructure.Migrations
+namespace LasagneCommerce.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class RefactorToLasagne : Migration

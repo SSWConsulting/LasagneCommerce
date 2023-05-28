@@ -2,7 +2,7 @@
 using Application.Products.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SpaghettiCommerce.Controllers;
+namespace LasagneCommerce.Controllers;
 
 [ApiController]
 [Route("[controller]")]

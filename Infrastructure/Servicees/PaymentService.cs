@@ -20,7 +20,7 @@ public class PaymentService : IPaymentService
             cvv
         };
 
-        var response = await httpClient.PostAsJsonAsync("https://spaghettipayments.com/api/payment", requestBody);
+        var response = await httpClient.PostAsJsonAsync("https://Lasagnepayments.com/api/payment", requestBody);
 
         if (response.IsSuccessStatusCode)
         {

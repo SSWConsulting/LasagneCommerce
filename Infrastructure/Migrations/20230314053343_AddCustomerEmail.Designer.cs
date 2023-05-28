@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SpaghettiCommerce.Infrastructure.Data;
+using LasagneCommerce.Infrastructure.Data;
 
 #nullable disable
 
-namespace SpaghettiCommerce.Infrastructure.Migrations
+namespace LasagneCommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20230314053343_AddCustomerEmail")]
@@ -25,7 +25,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Cart", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.CartItem", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +72,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("CartITems");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Category", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,7 +89,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Customer", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,7 +114,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Manufacturer", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Manufacturer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,7 +131,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("Manufacturers");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Order", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,7 +156,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.OrderItem", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,7 +185,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Product", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -209,7 +209,7 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Products.Product", b =>
+            modelBuilder.Entity("LasagneCommerce.Products.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -246,9 +246,9 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.ToTable("CatalogProducts");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Cart", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Cart", b =>
                 {
-                    b.HasOne("SpaghettiCommerce.Models.Customer", "Customer")
+                    b.HasOne("LasagneCommerce.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -257,15 +257,15 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.CartItem", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.CartItem", b =>
                 {
-                    b.HasOne("SpaghettiCommerce.Models.Cart", "Cart")
+                    b.HasOne("LasagneCommerce.Models.Cart", "Cart")
                         .WithMany("Items")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SpaghettiCommerce.Models.Product", "Product")
+                    b.HasOne("LasagneCommerce.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -276,9 +276,9 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Order", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Order", b =>
                 {
-                    b.HasOne("SpaghettiCommerce.Models.Customer", "Customer")
+                    b.HasOne("LasagneCommerce.Models.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -287,15 +287,15 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.OrderItem", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.OrderItem", b =>
                 {
-                    b.HasOne("SpaghettiCommerce.Models.Order", "Order")
+                    b.HasOne("LasagneCommerce.Models.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SpaghettiCommerce.Models.Product", "Product")
+                    b.HasOne("LasagneCommerce.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -306,22 +306,22 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Product", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Product", b =>
                 {
-                    b.HasOne("SpaghettiCommerce.Models.Manufacturer", null)
+                    b.HasOne("LasagneCommerce.Models.Manufacturer", null)
                         .WithMany("Products")
                         .HasForeignKey("ManufacturerId");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Products.Product", b =>
+            modelBuilder.Entity("LasagneCommerce.Products.Product", b =>
                 {
-                    b.HasOne("SpaghettiCommerce.Models.Category", "Category")
+                    b.HasOne("LasagneCommerce.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SpaghettiCommerce.Models.Manufacturer", "Manufacturer")
+                    b.HasOne("LasagneCommerce.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -332,22 +332,22 @@ namespace SpaghettiCommerce.Infrastructure.Migrations
                     b.Navigation("Manufacturer");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Cart", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Cart", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Customer", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Customer", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Manufacturer", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Manufacturer", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("SpaghettiCommerce.Models.Order", b =>
+            modelBuilder.Entity("LasagneCommerce.Models.Order", b =>
                 {
                     b.Navigation("Items");
                 });

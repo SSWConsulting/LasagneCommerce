@@ -11,9 +11,9 @@ using Infrastructure.Repositories;
 using Infrastructure.Servicees;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using SpaghettiCommerce.Infrastructure.Data;
+using LasagneCommerce.Infrastructure.Data;
 
-namespace SpaghettiCommerce
+namespace LasagneCommerce
 {
     public class Program
     {

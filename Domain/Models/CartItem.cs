@@ -1,4 +1,4 @@
-﻿namespace SpaghettiCommerce.Domain.Models;
+﻿namespace LasagneCommerce.Domain.Models;
 
 public class CartItem
 {

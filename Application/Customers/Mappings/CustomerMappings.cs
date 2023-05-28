@@ -1,6 +1,6 @@
 ﻿using Application.Customers.DTOs;
 using Application.Orders.Mappings;
-using SpaghettiCommerce.Domain.Models;
+using LasagneCommerce.Domain.Models;
 
 namespace Application.Customers.Mappings;
 

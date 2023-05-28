@@ -2,7 +2,7 @@
 using Application.Carts.DTOs;
 using Application.Carts.Mappings;
 using Application.Products.Abstractions;
-using SpaghettiCommerce.Domain.Models;
+using LasagneCommerce.Domain.Models;
 
 namespace Application.Carts.Services;
 

@@ -3,7 +3,7 @@ using Application.Common.Abstractions;
 using Application.Orders.Abstractions;
 using Application.Orders.DTOs;
 using Application.Orders.Mappings;
-using SpaghettiCommerce.Domain.Models;
+using LasagneCommerce.Domain.Models;
 
 namespace Application.Orders.Services;
 
